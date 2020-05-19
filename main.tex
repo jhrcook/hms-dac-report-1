@@ -1,12 +1,11 @@
 %Packages are included below, these are akin to libraries in other programming languages. As far as I can tell, there is no reason to reduce the number of packages included in a document. It might compile faster, but overleaf compiles fast so this should not be an issue.
-\documentclass[12pt,twoside]{report} %tells the compiler that this is a 'report' style document, and the main font size.
-\usepackage{setspace} %allows the use of '\doublespace' to set line spacing
+\documentclass[english, 11pt, letterpaper]{report} %tells the compiler that this is a 'report' style document, and the main font size.
+
 \usepackage[utf8]{inputenc} %inclusion of this is optional, overleaf includes it in its compiler so it is not necessary, it may be necessary for other compilers.
 \usepackage[english]{babel} %this does a few things eg allowing dates to be made by the compiler. probably best not to get rid of it
-\usepackage{wrapfig} %if it is desirable to wrap text (see https://www.overleaf.com/learn/latex/Wrapping_text_around_figures).
 \usepackage{graphicx} %this allows graphics to be put in easily
 \usepackage{float}%this allows you to put them in good places
-\usepackage[version=4]{mhchem} %this is good for chemical reactions
+% \usepackage[version=4]{mhchem} %this is good for chemical reactions
 \usepackage{amsmath} %maths package
 \usepackage{amssymb} %symbol package
 \usepackage{textcomp,gensymb} %more symbols (eg \degree)
@@ -30,9 +29,35 @@
 
 
 \usepackage[letterpaper, top=0.5in, bottom = 0.5in, right = 0.5in, left=0.5in]{geometry} %this describes the layout of the document and the margins etc.
+% \usepackage{setspace} %allows the use of '\doublespace' to set line spacing
 %\doublespacing %self explanatory
 \renewcommand{\baselinestretch}{1.5}
 
+% Single spaces after periods.
+\frenchspacing
+
+% Font to Helvetica.
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Specific command for the KRAS gene.
+\newcommand{\KRAS}{\emph{KRAS}}
+% Specific command for the KRAS protein.
+\newcommand{\kras}{K-RAS}
+
+\usepackage[T1]{fontenc}
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+
+% Styling of Chapter and Section titles.
+\titleformat{\chapter}[hang]{\LARGE\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\LARGE\bfseries}
+\titleformat{\section}[hang]{\Large\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Large\bfseries}
+\titleformat{\subsection}[hang]{\large\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\large\bfseries}
+\titleformat{\subsubsection}[hang]{\normalsize\itshape}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\normalsize\itshape}
+
+% Use "References" instead of "Bibliography".
+\AtBeginDocument{\renewcommand{\bibname}{References}}
 
 \begin{document} % you have to do this to start the document
 
@@ -54,13 +79,11 @@
 
 \tableofcontents 
 
-\listoffigures 
+% \listoffigures 
 
 % \listoftables 
 
 \input{preamble/abstract.tex} 
-
-\input{preamble/acknowledgements.tex}
 
 \pagenumbering{arabic} %back to Arabic numbering for the rest
 
@@ -68,24 +91,20 @@
 % Chapters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{chapters/01intro.tex}
+\input{chapters/01_introduction.tex}
 
-% \input{chapters/02images.tex}
+\input{chapters/02_experimental-design.tex}
 
-% \input{chapters/03references.tex}
-
-% \input{chapters/04maths.tex}
-
-% \input{chapters/05usingoverleaf.tex}
+\input{chapters/03_conclusion.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\appendix
+% \appendix
 
-\input{appendices/equations.tex}
+% \input{appendices/equations.tex}
 
-\input{appendices/sessionprotocol.tex}
+% \input{appendices/sessionprotocol.tex}
 
 % \input{appendices/code.tex}
 
