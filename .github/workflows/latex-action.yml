@@ -9,7 +9,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@master
         with:
-          root_file: comutation-manuscript.tex
+          root_file: main.tex
   convert_via_pandoc:
     runs-on: ubuntu-latest
     steps:
@@ -21,10 +21,10 @@ jobs:
             -s main.tex
             -f latex 
             -t docx 
-            -o output/comutation-manuscript.docx 
+            -o output/dac-report-1.docx 
             --bibliography reference_files/references.bib 
             --csl nature-genetics.csl
       - uses: actions/upload-artifact@master
         with:
-          name: manuscript
+          name: dac_report
           path: output
