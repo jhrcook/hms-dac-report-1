@@ -33,6 +33,9 @@
 %\doublespacing %self explanatory
 \renewcommand{\baselinestretch}{1.5}
 
+% Indent on the first paragraph of a section.
+\usepackage{indentfirst}
+
 % Single spaces after periods.
 \frenchspacing
 
@@ -50,11 +53,15 @@
 \definecolor{gray75}{gray}{0.75}
 \newcommand{\hsp}{\hspace{20pt}}
 
+% Styling of captions
+\usepackage{caption,setspace}
+\captionsetup{font={small,stretch=1}}
+
 % Styling of Chapter and Section titles.
 \titleformat{\chapter}[hang]{\LARGE\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\LARGE\bfseries}
-\titleformat{\section}[hang]{\Large\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Large\bfseries}
-\titleformat{\subsection}[hang]{\large\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\large\bfseries}
-\titleformat{\subsubsection}[hang]{\normalsize\itshape}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\normalsize\itshape}
+\titleformat{\section}[hang]{\Large\bfseries}{\thesection.\hspace{10pt}}{0pt}{\Large\bfseries}
+\titleformat{\subsection}[hang]{\large\bfseries}{}{0pt}{\large\bfseries}
+\titleformat{\subsubsection}[hang]{\normalsize\itshape}{}{0pt}{\normalsize\itshape}
 
 % Use "References" instead of "Bibliography".
 \AtBeginDocument{\renewcommand{\bibname}{References}}
