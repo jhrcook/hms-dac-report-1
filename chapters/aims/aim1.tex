@@ -48,7 +48,7 @@ One caveat to the analyses proposed above is that not all mutagenic forces are c
 Presently, mutational signatures are being extended to include different types of mutations beyond SBS, and we may be able to use these to enhance the above analyses.
 
 The calculations of the likelihood that a mutational process caused a \KRAS{} allele and the estimation of the allelic distribution using the trinucleotide contexts both assume that the mutational signatures are uniformly distributed across the genome.
-However, the distribution is known to be non-uniform, and instead depends on various characteristics of the DNA including the chromatin state [CITE] and local rate of transcription [CITE].
+However, the distribution is known to be non-uniform, and instead depends on various characteristics of the DNA including the chromatin state [CITE] and local rate and strand-bias of transcription \cite{Tomkova2018MutationalAsymmetry}.
 
 
 \subsubsection*{Preliminary data}
@@ -214,7 +214,7 @@ Measuring for gene set enrichment revealed strong patterns in differential depen
 62 individual genes were found to demonstrate \KRAS{} allele-specific genetic dependency.
 They were hierarchically clustered into 4 groups by their dependency scores (Figure \ref{fig:genetic-dependency}d).
 Four notable genes with allele-specific associations are displayed in Figure \ref{fig:genetic-dependency}e.
-First, knocking-out \emph{LIN7C}, a gene that maintains the asymmetric distribution of membrane proteins in polarized epithelial cells \cite{Monastyrskaya2013MiR-199a-5pSyndrome}, had a more severe reduction on growth in \KRAS{} G13D cell lines compared to the others.
+First, knocking-out \emph{LIN7C}, a gene that maintains the asymmetric distribution of membrane proteins in polarized epithelial cells \cite{Monastyrskaya2013MiR-199a-5pSyndrome}, had a more severe reduction on growth in \KRAS{ } G13D cell lines compared to the others.
 Also, a regulator of apoptosis previously linked to dysregulated expression in cancer, \emph{TFPT}, demonstrated significantly greater dependency in G12D cell lines.
 \emph{STARD9}, a gene encoding a kinesin required for mitotic spindle assembly \cite{Torres2011TheAssembly}, had moderate growth defects when knocked-out in all cell lines except those with a \KRAS{} G12D mutation.
 Lastly, the kinetochore-associated protein (\emph{KNTC1}), a regulator of the mitotic checkpoint \cite{Chan2000HumanKinetochores., Scaerou2001TheKinetochore., Kops2005ZW10Kinetochore.}, which demonstrated moderate to strong lethal effects when knocked out in almost every cell line except for those with a \KRAS{} G12V allele.

@@ -1,0 +1,93 @@
+\section{Aim 2. Identify the characteristics that determine sensitivity to oncogenic \KRAS{} mutations.}
+
+\subsection*{Rationale}
+
+Though \KRAS{} is estimated to be mutated in 10\%-14\% \cite{Bailey2018, Prior2020TheCancer} of all cancer, only a few cancer types frequently have oncogenic \KRAS{} mutations.
+One explanation for this phenomenon is that the actual mutational event is less likely to occur in some tissues compared to others due to differences in mutagenic processes.
+However, this is unlikely because neighboring tissues often demonstrate drastically different rates of \KRAS mutations.
+One striking example is how 32\% of lung adenocarcinoma, but only 4\% of small cell lung cancer tumors have a \KRAS{} mutation \cite{Bailey2018, Prior2020TheCancer}.
+Additionally, experimental evidence has demonstrated that even the forced expression of mutant \kras{} does not induce oncogenesis in non-permissive tissues including XX.
+Instead, we hypothesize that the basal state of a tissue, including the existing signaling architecture, determines its sensitivity to \KRAS{} hyperactivation.
+Therefore, I aim to identify such properties of tissues that determine their sensitivity to \KRAS{} oncogenesis.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Aim 2.1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Aim 2.1. Determine the extent to which mutational processes affects the frequency of \KRAS{} mutations across the cancers.}
+
+\subsubsection*{Approach}
+
+Similar to Aim 1.1, but use count data instead of averaging of tumor samples.
+
+\subsubsection*{Pitfalls and alternative approaches}
+
+Similar problems as with Aim 1.1.
+
+\subsubsection*{Preliminary data}
+
+Nothing.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Aim 2.2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Aim 2.2. Model \KRAS{} sensitivity on the basal signaling of tissue.}
+
+\subsubsection*{Approach}
+
+Proteomics and phosphoproteomics from Olesja.
+
+Different types of metrics: raw proteomics, raw phospho, scaled phospho, include both with interactions, include only interactions.
+
+Linear mixed-effects model, random effects = mouse.
+Pre-select predictors as those in signaling pathways.
+Latent variable models with regularization.
+
+\subsubsection*{Pitfalls and alternative approaches}
+
+Data is difficult to generate, so only a handful of mice and tissues.
+
+Curse of dimensionality.
+
+Alternatives: nonlinear methods (RF, SVM). Problems: more difficult to interpret; potentially more suspetible to of overfitting (more hyperparameters to tune).
+
+\subsubsection*{Preliminary data}
+
+We have data.
+Maybe do some quick things with OP data: num. proteins, num phosphosites, clustering, PCA, etc..
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Aim 2.3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection*{Aim 2.3. Identify recurring events in insensitive tissues with oncogenic \KRAS{} mutations.}
+
+\subsubsection*{Approach}
+
+There are still KRAS mutants. 
+Why tho? 
+Are they passengers? 
+Are they drivers?
+What has to happen to allow them to be drivers?
+
+Collect as many cancer samples as possible.
+
+Cluster cancers by the type of disruptions to KRAS: mutation, CNA, RNA expression.
+
+Comutation analysis.
+Include CNA.
+
+Associate with chromatin state. 
+Large scale restructuring due to epigenetic changes.
+
+\subsubsection*{Pitfalls and alternative approaches}
+
+Rare.
+Not all data for every sample.
+Thus less power for analysis.
+
+\subsubsection*{Preliminary data}
+
+Bar-plot of number of samples with enough KRAS mutations.
