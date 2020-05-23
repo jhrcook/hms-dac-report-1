@@ -4,11 +4,11 @@
 
 Though \KRAS{} is estimated to be mutated in 10\%-14\% \cite{Bailey2018, Prior2020TheCancer} of all cancer, only a few cancer types frequently have oncogenic \KRAS{} mutations.
 One explanation for this phenomenon is that the actual mutational event is less likely to occur in some tissues compared to others due to differences in mutagenic processes.
-However, this is unlikely because neighboring tissues often demonstrate drastically different rates of \KRAS mutations.
+However, this is unlikely because neighboring tissues often demonstrate drastically different rates of \KRAS{} mutations.
 One striking example is how 32\% of lung adenocarcinoma, but only 4\% of small cell lung cancer tumors have a \KRAS{} mutation \cite{Bailey2018, Prior2020TheCancer}.
-Additionally, experimental evidence has demonstrated that even the forced expression of mutant \kras{} does not induce oncogenesis in non-permissive tissues including XX.
+Additionally, experimental evidence has demonstrated that even the forced expression of mutant \kras{} does not induce a hyperproliferative phenotype in all tissues \cite{Ray2011EpithelialModel,  Parikh2012MouseResponses}.
 Instead, we hypothesize that the basal state of a tissue, including the existing signaling architecture, determines its sensitivity to \KRAS{} hyperactivation.
-Therefore, I aim to identify such properties of tissues that determine their sensitivity to \KRAS{} oncogenesis.
+Therefore, I aim to identify properties of tissues that determine their sensitivity to \KRAS{} oncogenesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Aim 2.1
@@ -18,15 +18,36 @@ Therefore, I aim to identify such properties of tissues that determine their sen
 
 \subsubsection*{Approach}
 
-Similar to Aim 1.1, but use count data instead of averaging of tumor samples.
+As mentioned previously, one explanation for the vast variation in \KRAS{} mutational frequency amongst different cancer types is that the causative mutations are more common in some tissues than others.
+
+Mutational signatures will be used to assess the ability of various cancer types to obtain an oncogenic \KRAS{} mutation.
+This will be accomplished via similar means as explained in Aim 1.1: by calculating the expected frequency of \KRAS{} mutations according to the genome-wide frequency of mutations in identical trinucleotide contexts.
+However, instead of normalizing the values to report the probability of each allele to occur in each tumor sample, the values will be normalized to the total number of mutations in the tumor sample.
+Thus, they will be comparable across cancer samples as a measure of the ability to gain a \KRAS{} mutation.
+
+In addition, I will explore the use of count-based statistical models to extract additional information not available in aggregated statistics.
+To begin, a logistic model will be fit to the number of mutations that could cause an activating \KRAS{} mutation and the total number of mutations to predict whether the tumor sample had a \KRAS{} mutation.
+The coefficients of the fit model will be estimates of the impact of the types of mutations found in each sample on the probability of having a \KRAS{} mutation.
+Additional models will be fit with fewer (e.g. just the total number of mutations) or additional (e.g. the mutation of other oncogenes such as \emph{BRAF} or \emph{EGFR}, stage of cancer, etc.) covariates to estimate the predictive power of the number of mutations that could create an oncogenic \KRAS{} allele taking into account other factors.
+Additional models that include random effects for the tissue of origin or use a mixture-distribution to model different underlying rates of mutation can be compared to the logistic models.
+
+Because there is experimental evidence that the tissue-of-origin determines the effect of hyperactive \kras{}, I expect that the number of mutations that could cause a \KRAS{} mutation will have little predictive power on whether a tumor sample has a \KRAS{} mutation.
+Still, this analysis presents a rigorous statistical examination of this potential explanation.
 
 \subsubsection*{Pitfalls and alternative approaches}
 
-Similar problems as with Aim 1.1.
+The proposed methods are limited in similar ways as mentioned in Aim 1.1.
+Namely, this analysis will continue to assume that mutational forces act uniformly across the genome.
+
+An additional limiting factor of the analysis will be the sparsity of \KRAS{} mutants in tumors from \KRAS{}-insensitive tissues.
+This will limit the number of cancers that can be studied as only those with a sufficient number of \KRAS{} mutants can be fit with the logistic models.
 
 \subsubsection*{Preliminary data}
 
-Nothing.
+Currently, I have collected the whole exome or genome sequencing data from XX tumor samples from XX different tissues of origin.
+These cancers have been anatomically organized using the OncoTree graph from Memorial Sloan Kettering.
+As stated above, the number of \KRAS{} mutations will be a major determinant for whether mutation information from a cancer type can be analyzed as described.
+Thus far, there are...
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -37,7 +58,20 @@ Nothing.
 
 \subsubsection*{Approach}
 
-Proteomics and phosphoproteomics from Olesja.
+Our hypothesis is that the structure of the ordinary signaling networks in a tissue determines its susceptibility to transformation by hyperactive \kras{} signaling.
+Thus, I will use proteomic and phosphoproteomic data from \moKRAS{}\textsuperscript{WT/WT} mice collected by Dr. Olesja Popow to identify distinctions between sensitive and insensitive tissues.
+The goal is to generate hypotheses that we could ultimately test in a mouse by pharmacologically or genetically modifying the insensitive tissue to make it sensitive to \KRAS{} mutation.
+
+As before, I will model on whether or not the tissue is sensitive to \KRAS{} mutation. 
+The amount of each protein, the amount of phosphorylation of each protein, the level of phosphorylation relative to the total amount of each protein, and ratios of different phosphorylations on the same protein can be used as input values.
+
+Unless directly dealt with, the high dimensionality of the data will cause the model to overfit.
+As such, three strategies will be tested.
+First, proteins that are involved in key signaling pathways (such as Wnt regulation, the MAPK pathway, or cell cycle regulation) will be selected.
+Second, regularization or stepwise model selection algorithms will be used to reduce the number of predictors to just those with the most explanatory value.
+Third, latent-variable models such as partial least squares or (see link below...).
+% http://www.biostat.jhsph.edu/~kbroche/Aging%20-%20PDF/Intro%20to%20Latent%20Variable%20Models.pdf
+
 
 Different types of metrics: raw proteomics, raw phospho, scaled phospho, include both with interactions, include only interactions.
 
@@ -52,6 +86,11 @@ Data is difficult to generate, so only a handful of mice and tissues.
 Curse of dimensionality.
 
 Alternatives: nonlinear methods (RF, SVM). Problems: more difficult to interpret; potentially more suspetible to of overfitting (more hyperparameters to tune).
+
+Problem could be that KRAS doesn't cause cancer in the same way.
+The insensitive tissues may be insenstive in different ways, too.
+
+These are mice and not humans. Tie in human information in the next sub-aim
 
 \subsubsection*{Preliminary data}
 
