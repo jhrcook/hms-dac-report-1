@@ -4,7 +4,7 @@
 
 Though \KRAS{} is estimated to be mutated in 10\%-14\% \cite{Bailey2018, Prior2020TheCancer} of all cancer, only a few cancer types frequently have oncogenic \KRAS{} mutations.
 One explanation for this phenomenon is that the actual mutational event is less likely to occur in some tissues compared to others due to differences in mutagenic processes.
-However, this is unlikely because neighboring tissues often demonstrate drastically different rates of \KRAS{} mutations.
+However, this is unlikely because neighboring tissues often demonstrate drastically different rates of \KRAS{} mutation.
 One striking example is how 32\% of lung adenocarcinoma, but only 4\% of small cell lung cancer tumors have a \KRAS{} mutation \cite{Bailey2018, Prior2020TheCancer}.
 Additionally, experimental evidence has demonstrated that even the forced expression of mutant \kras{} does not induce a hyperproliferative phenotype in all tissues \cite{Ray2011EpithelialModel,  Parikh2012MouseResponses}.
 Instead, we hypothesize that the basal state of a tissue, including the existing signaling architecture, determines its sensitivity to \KRAS{} hyperactivation.
@@ -40,15 +40,37 @@ The proposed methods are limited in similar ways as mentioned in Aim 1.1.
 Namely, this analysis will continue to assume that mutational forces act uniformly across the genome.
 
 An additional limiting factor of the analysis will be the sparsity of \KRAS{} mutants in tumors from \KRAS{}-insensitive tissues.
-This will limit the number of cancers that can be studied as only those with a sufficient number of \KRAS{} mutants can be fit with the logistic models.
+This will limit the number of cancer types that can be studied as only those with a sufficient number of \KRAS{} mutants can be fit with the logistic models.
 
 \subsubsection*{Preliminary data}
 
-Currently, I have collected the whole exome or genome sequencing data from XX tumor samples from XX different tissues of origin.
-These cancers have been anatomically organized using the OncoTree graph from Memorial Sloan Kettering.
-As stated above, the number of \KRAS{} mutations will be a major determinant for whether mutation information from a cancer type can be analyzed as described.
-Thus far, there are...
+Currently, I have collected the sequencing data of about 42,000 tumor samples from 32 different tissues of origin.
+Of this data set, 13,652 samples have targeted sequencing data and the remaining 28,321 samples were either whole genome or exome sequenced (WG/ES).
+These cancers have been anatomically organized using the OncoTree graph from Memorial Sloan Kettering (Figure \ref{fig:oncotree}).
 
+\begin{figure}[t!]
+\centering
+\includegraphics[width=180mm]{figures/aim2/oncotree_figure.jpg}
+\caption{
+    \textbf{The cancer samples were organized according to their anatomical relationships using the OncoTree.}
+    Each layer from the middle represents a sub-location of the parent node.
+    Nodes are colored by the parent organ and the size is related to the number of cancer samples that have been collected.
+}
+\label{fig:oncotree}
+\end{figure}
+
+As stated above, the number of \KRAS{} mutations will be a major determinant for whether mutation information from a cancer type can be analyzed as described.
+Thus far, the \KRAS{}-insensitive tissues with the most number of samples with WG/ES data and an oncogenic \KRAS{} mutation include hepatocellular carcinoma, bladder urothelial carcinoma, cholangiocarcinoma, and esophagogastric adenocarcinoma (Figure \ref{fig:num-samples-kras-resistant}).
+
+\begin{figure}[t!]
+\centering
+\includegraphics[width=120mm]{figures/aim2/kras-mutations-from-insensitive-tissues.jpg}
+\caption{
+    \textbf{The number of targeted sequenced and whole genome or exome sequenced (WG/ES) samples with \KRAS{} mutations.}
+    Each cancer type (row) is annotated with the total number of samples with a \KRAS{} mutation.
+}
+\label{fig:num-samples-kras-resistant}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Aim 2.2
@@ -59,43 +81,59 @@ Thus far, there are...
 \subsubsection*{Approach}
 
 Our hypothesis is that the structure of the ordinary signaling networks in a tissue determines its susceptibility to transformation by hyperactive \kras{} signaling.
-Thus, I will use proteomic and phosphoproteomic data from \moKRAS{}\textsuperscript{WT/WT} mice collected by Dr. Olesja Popow to identify distinctions between sensitive and insensitive tissues.
+Thus, I will use tandem-mass-tagged (TMT)-labeled \cite{Thompson2003} proteomic and phosphoproteomic data from \moKRAS{}\textsuperscript{WT/WT} mice collected by Dr. Olesja Popow to identify distinctions between sensitive and insensitive tissues.
+The following organs were collected: colon, lung, pancreas, spleen (the "\KRAS{}-sensitive" tissues), heart, kidney, liver, skeletal muscle, and small intestine (the "\KRAS{}-insensitive" tissue).
 The goal is to generate hypotheses that we could ultimately test in a mouse by pharmacologically or genetically modifying the insensitive tissue to make it sensitive to \KRAS{} mutation.
 
 As before, I will model on whether or not the tissue is sensitive to \KRAS{} mutation. 
 The amount of each protein, the amount of phosphorylation of each protein, the level of phosphorylation relative to the total amount of each protein, and ratios of different phosphorylations on the same protein can be used as input values.
 
-Unless directly dealt with, the high dimensionality of the data will cause the model to overfit.
+Unless directly addressed, the high dimensionality of the data will cause the model to overfit.
 As such, three strategies will be tested.
 First, proteins that are involved in key signaling pathways (such as Wnt regulation, the MAPK pathway, or cell cycle regulation) will be selected.
-Second, regularization or stepwise model selection algorithms will be used to reduce the number of predictors to just those with the most explanatory value.
-Third, latent-variable models such as partial least squares or (see link below...).
-% http://www.biostat.jhsph.edu/~kbroche/Aging%20-%20PDF/Intro%20to%20Latent%20Variable%20Models.pdf
-
-
-Different types of metrics: raw proteomics, raw phospho, scaled phospho, include both with interactions, include only interactions.
-
-Linear mixed-effects model, random effects = mouse.
-Pre-select predictors as those in signaling pathways.
-Latent variable models with regularization.
+Second, regularization or stepwise model selection algorithms will be used to reduce the number of predictors to just those with the most explanatory value by penalizing model complexity.
+Third, latent-variable models such as partial least squares, principal component regression, or factor analysis will be tested.
+These groups of methods provide a comprehensive comparative analysis of the many potentially explanatory models for the data.
 
 \subsubsection*{Pitfalls and alternative approaches}
 
-Data is difficult to generate, so only a handful of mice and tissues.
+One limiting factor of the analysis will be the relatively few data points collected.
+Twelve mice total were sacrificed, but, to increase the amount of protein for detection by mass spectrometry (MS) and reduce variation between samples, four (two females and two males) were pooled for each set of TMT-labeling.
+Therefore, there are only 3 data points per protein per tissue.
 
-Curse of dimensionality.
+The approach outlined above uses only linear models, though there are many non-linear models that could be used to identify differences between the two groups of tissues, such as support vector machines and random forest classifiers.
+There are two primary reasons why I propose the use of linear models for the present study.
+The first is that I believe that coefficients for the linear methods are more interpretable than the parameters used by non-linear methods.
+The second is that the nonlinear methods have hyperparameters that must be tuned to prevent overfitting.
+With such few data points, common methods such as cross-validation are not as effective.
 
-Alternatives: nonlinear methods (RF, SVM). Problems: more difficult to interpret; potentially more suspetible to of overfitting (more hyperparameters to tune).
+A potential pitfall for this analysis is that \KRAS{} may not drive cancer via the same mechanism in all \KRAS{} sensitive tissues.
+Conversely, the same may be true for how insensitive tissues stifle oncogenic \kras{} signaling.
+Therefore, we will also build models using subsets of the tissues.
+Subsets could include comparing a single sensitive tissue to all of the insensitive tissues, or comparing tissues of similar function but different sensitivity to \KRAS{} (such as the colon and the small intestine).
 
-Problem could be that KRAS doesn't cause cancer in the same way.
-The insensitive tissues may be insenstive in different ways, too.
-
-These are mice and not humans. Tie in human information in the next sub-aim
+% These are mice and not humans. Tie in human information in the next sub-aim
 
 \subsubsection*{Preliminary data}
 
-We have data.
-Maybe do some quick things with OP data: num. proteins, num phosphosites, clustering, PCA, etc..
+As mentioned above, the proteomics and phosphoproteomics data have been collected for three groups of four mice.
+Unsurprisingly, a preliminary exploratory analysis indicated that the strongest similarities are between samples is by organ.
+When the dimensionality of the protein-space was reduced by PCA, plotting the t-SNE of the new dimensions demonstrated that the samples from the same organ clustered together (Figure \ref{fig:proteomics-eda}a, b).
+Additionally, using a Student's \emph{t-test} to find the proteins that most clearly distinguished between the sensitive and insensitive tissues instead identified proteins with high tissue-specific expression (Figure \ref{fig:proteomics-eda}c).
+These two precursory analyses demonstrate that organ-specific expression will present a major difficulty in finding relevant distinctions between the proteomics of sensitive and insensitive tissues.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=180mm]{figures/aim2/proteomics-eda_figure.jpeg}
+\caption{
+    \textbf{The proteomics data cluster by tissue-type, not \KRAS{}-sensitivity.}
+    \textbf{a.} The variance explained by the first ten principle components (PC) of the proteomics data.
+    \textbf{b.} t-SNE applied to the new coordinates from PCA. Each point is colored according to the tissue and indicated to be \KRAS{}-sensitive or -insensitive by a circle or triangle, respectively. The bridge channels are indicated by "x"-marks.
+    \textbf{c.} A heatmap of the 50 proteins with the strongest differences between sensitive and insensitive tissues (Student's \emph{t}-test, selected by p-value). Each column is a protein and each row is a tissue sample with the tissue and \KRAS{} sensitivity labeled by the column annotation.
+}
+\label{fig:proteomics-eda}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Aim 2.3
@@ -105,28 +143,27 @@ Maybe do some quick things with OP data: num. proteins, num phosphosites, cluste
 
 \subsubsection*{Approach}
 
-There are still KRAS mutants. 
-Why tho? 
-Are they passengers? 
-Are they drivers?
-What has to happen to allow them to be drivers?
+Though the experimental evidence suggests that some tissues are not susceptible to hyperactive \kras{} signaling, there are still tumors from these locations that possess a mutation at a \KRAS{} hotspot.
+While Aim 2.2 proposes to identify the differences between \KRAS{}-sensitive and insensitive tissues in homeostasis, this Aim approaches the question from the opposing direction: "What allowed \KRAS{} to drive these cancers in normally insensitive tissues?"
 
-Collect as many cancer samples as possible.
+First, we will determine if these mutations were likely to have driven the cancer by measuring their allele-fraction in the sequencing data.
+If the mutation to \KRAS{} was found in a small proportion of the sequencing reads that covered the \KRAS{} locus, then it was less likely to have driven tumor progression and was instead a passenger mutation.
+In addition, if the data are available, we can analyze RNA and/or protein expression to ensure that the hyperactive allele was expressed.
 
-Cluster cancers by the type of disruptions to KRAS: mutation, CNA, RNA expression.
+If we find that the \KRAS{} mutations were likely to have acted as drivers in tumors originating in insensitive tumors, the we will proceed with characterizing recurrent genetic co-alterations.
+This would include a comutation analysis similar to that described in Aim 1.2 to identify genes that tend to comutate with \KRAS{}.
+Also, because the loss of tumor suppressor genes is important to the progression of \KRAS{}-driven cancers (e.g. the loss of \emph{APC} in COAD, \emph{STK11} and \emph{KEAP1} in LUAD, and \emph{CDKN2A} in PAAD), we will analyze the co-occurrence of copy number alterations (CNA) to known tumor suppressors.
 
-Comutation analysis.
-Include CNA.
-
-Associate with chromatin state. 
-Large scale restructuring due to epigenetic changes.
+Finally, we will use the conclusions from this analysis of human data to help understand the models in Aim 2.2.
+As the models are looking for differences between multiple organs, it will be difficult to tell what is distinct due to tissue-specific functions and what is relevant to \KRAS{} sensitivity.
+Thus, knowing what permitted an insensitive tissue to be transformed by a \KRAS{} mutation in human tumors will help interpret the findings from Aim 2.2.
 
 \subsubsection*{Pitfalls and alternative approaches}
 
-Rare.
-Not all data for every sample.
-Thus less power for analysis.
+As noted in Aim 2.1, the sparsity of \KRAS{}-mutants tumors from \KRAS{}-insensitive tissues will be a limiting factor.
+It will introduce a limit on the power of the analysis to detect more rare comutation events.
 
 \subsubsection*{Preliminary data}
 
-Bar-plot of number of samples with enough KRAS mutations.
+So far, I am still collecting and preparing data for analyses.
+An overview of the number of tumor samples and how many have \KRAS{} mutations were displayed in Aim 2.1.
