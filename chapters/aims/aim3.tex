@@ -4,12 +4,13 @@
 
 As explained by Haigis \emph{et al.} in \cite{Haigis2019}, substantial evidence has lead us to hypothesize that the potential for a gene to drive cancer is predominately determined by the preexisting state of the cell and tissue microenvironment.
 This state is determined by the epigenetic structure established over the development of the tissue.
-By regulating gene expression, the epigenetic state establishes the transcriptome and proteome, defining the cellular signaling network.
-Only the disruption to specific genes and proteins are oncogenic within the context of this network, thus defining the tissue-specificity of tumor driver genes.
+By regulating gene expression, epigenetics establishes the transcriptome and proteome, defining the cellular signaling network.
+Only the disruption to specific genes and proteins are oncogenic within the context of this network, thus defining the tissue-specificity of cancer driver genes.
 
 PRC2 is responsible for regulating gene expression by methylating lysine 27 of histone H3 (H3K27), and its activity is often ascribed to maintaining a cell's functional identity \cite{Comet2016MaintainingCancer., Laugesen2019a}.
 Because the genes comprising this protein complex are frequently mutated in cancer, we propose it as a system through which to investigate the impact of the epigenome on tissue-specificity of cancer drivers.
-For this study, we propose using COAD and LUAD as they both have high frequency of gain-of-function alterations to PRC2 through amplification or over-expression of \emph{EZH2}, and our lab and collaborators have extensive experience with these two diseases.
+For this study, we propose using COAD and LUAD as they both have high frequencies of gain-of-function alterations to PRC2 through amplification or over-expression of \emph{EZH2}.
+Also, our lab and collaborators have extensive experience with these two diseases.
 In addition, we have been advised by Kristian Helin to use skin melanoma because...
 \textbf{We hypothesize that the dysregulation of PRC2 methylation alters the state of a cell, and consequently alters the oncogenic potential of cancer driver genes.}
 
@@ -17,7 +18,7 @@ In addition, we have been advised by Kristian Helin to use skin melanoma because
 % Aim 1.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection*{Aim 1.1. Identify recurring concomitant mutations in PRC2-mutant tumors.}
+\subsection*{Aim 1.1. Identify cancer drivers by mutational patterns in PRC2-mutant tumors.}
 
 
 \subsubsection*{Approach}
@@ -26,13 +27,13 @@ If the epigenetic state of a cell determines its susceptibility to different can
 To this end, we will identify genes that are more often mutated in PRC2-mutant tumors compared to those with normal PRC2. 
 Of these genes, the properties of the known oncogenes, along with a functional enrichment analysis of the others, will describe the distinct changes induced by PRC2-mediated epigenetic changes.
 
-In addition, we can identify more complex rearrangements of the cellular signaling structure by identifying new modules of comutating or mutually-exclusive genes in PRC2-mutant tumors \cite{Miller2011, Vandin2012, Ciriello2012, Jia2014, Zhang2014c, Ahmed2015, Kim2015, Leiserson2015, Babur2015, Leiserson2015b, Dao2017, Leiserson2016, Cho2016a, Reyna2018, Zhang2018e, Bokhari2020QuaDMutNetEx:Frequency.}.
-Genes often comutate because the events cooperate in driving cancer or are mutually-exclusive because they are redundant, synthetic lethal \cite{Kaelin2005}, or collateral lethal \cite{Muller2015}.
-Therefore, comutation or mutually exclusive interactions that are unique or lost in PRC2-mutant tumors suggests that the epigenetic alterations have greatly influenced the signaling pathways.
+We can identify more complex rearrangements of the cellular signaling structure by identifying new modules of comutating or mutually-exclusive genes in PRC2-mutant tumors using existing computational methods \cite{Miller2011, Vandin2012, Ciriello2012, Jia2014, Zhang2014c, Ahmed2015, Kim2015, Leiserson2015, Babur2015, Leiserson2015b, Dao2017, Leiserson2016, Cho2016a, Reyna2018, Zhang2018e, Bokhari2020QuaDMutNetEx:Frequency.}.
+Genes often comutate because the events cooperate in driving cancer or are mutually-exclusive because they are redundant or due to synthetic lethal \cite{Kaelin2005} or collateral lethal \cite{Muller2015} interactions.
+Therefore, comutation or mutually exclusive interactions that are unique or lost in PRC2-mutant tumors would suggest that the epigenetic alterations have greatly influenced the signaling pathways.
 
 It is known that chromatin structure plays a substantial role in the distribution of mutations along the chromosomes \cite{Schuster-Bockler2012, Polak2015, Gonzalez-Perez2019}.
-Thus, the possibility of the comutation events described earlier could be increased by changes in their proximity in 3D-space due to altered PRC2 behaviour.
-We will include this in the analysis by identifying "spatial comutation hotspots" \cite{Shi2016ChromatinGenes}, thus linking dysregulated PRC2-mediated chromatin organization to the increased rates of mutation or changes in comutation/mutually exclusive modules.
+Thus, the probability of the comutation and mutually exclusive events identified previously could be altered by changes to their proximity in 3D-space elicited by altered PRC2 behaviour.
+We will include this in the analysis by identifying "spatial comutation hotspots" \cite{Shi2016ChromatinGenes}, thus linking dysregulated PRC2-mediated chromatin organization to the increased rates of mutation or changes in comutation and mutually exclusive modules.
 
 Overall, the analyses proposed above represent a comprehensive characterization of changes to cancer progression induced by aberrant PRC2 epigenetic regulation.
 
@@ -43,6 +44,12 @@ As PRC2 is a protein complex with multiple subtypes thought to modify its recrui
 Therefore, a careful survey of the RNA expression, copy number, and missense mutations to the genes comprising PRC2 will be conducted prior to the above analyses.
 However, one of the reasons for studying this phenomenon in COAD and LUAD is because the most common alteration to PRC2 is gain-of-function via the overexpression of \emph{EZH2} \cite{Comet2016MaintainingCancer.}.
 Other cancers have frequent loss-of-function through the deletion of any of the PRC2 core subunits, making the analysis far more complex in those systems \cite{Comet2016MaintainingCancer.}.
+
+Since we want to prescribe altered rates of mutation to changes in PRC2 activity, knowing the timing of the events may be important.
+The process of ordering mutations acquired during tumorigensis is best accomplished using single-cell analyses.
+However, PRC2 is often disrupted at the transcription level, thus measuring when mutations occurred with respect to PRC2 dysregulation will not be possible in many of the samples.
+However, it may be possible to determine the timing of events in tumors where the component genes of PRC2 were amplified.
+Further investigation is needed to fully understand if the analysis of single-cell genome sequencing is a viable means of determining the order of events identified in the previous analyses.
 
 
 
@@ -55,9 +62,21 @@ Other cancers have frequent loss-of-function through the deletion of any of the 
 
 \subsubsection*{Approach}
 
-Differential genetic dependency in PRC2-mutant cell lines.
+As dysregulated PRC2 alters the cellular signaling context of a tumor, we expect distinct dependencies on cellular processes to arise.
+Thus, we will again utilize the Cancer Dependency Map Project's CRISPR-Cas9 knockout screen to identify genes that are differentially dependent in PRC2-mutant cancer cell lines.
+As before, we will create a linear model for each gene that will use the RNA-expression of the gene, its mutational status, and the status of PRC2 to predict the effect of knocking-out the gene on the cell's proliferation.
+We will also build models that include binary indicators for the common oncogenes and tumor suppressor genes found in each cancer type.
+These models will be compared to estimate the importance of altered PRC2 action on the dependency on each gene.
+Further information from the genes found to have differential dependence per the activity of PRC2 will be gathered by finding which cellular processes are enriched in the hits.
+
+As we are interested in the potency of oncogenes in the presence of normal and altered PRC2 activity, we will also build specific models for the dependence of known oncogenes and those with increased or reduced rates of mutation in PRC2-mutant tumors (from Aim 3.1) that include an interaction term between the oncogene and PRC2 activity.
+These terms will indicate whether there is an effect of a cell having a mutation to the oncogene and dysregulated PRC2 on the dependency of the cell on the oncogene.
+Comparing these models to those without the interaction term will indicate if the interaction was important.
 
 
 \subsubsection*{Pitfalls and alternative approaches}
 
-
+An alternative approach to building a model for each individual gene as proposed above would be to build models for entire pathways or cellular functions instead.
+This would recognize instances where the PRC2 mutation has caused the dependency on a group of genes to change, but where each cell line has different genes in the set that have altered dependency or the dependency is spread evenly amongst the genes.
+One foreseeable difficulty will be finding a single metric to summarise the dependency score for an entire pathway for each cell line.
+One option would be to use a method such as Gene Set Variation Analysis \cite{Hanzelmann2013} to transform the gene level data into a pathway level enrichment score for each cell line.
