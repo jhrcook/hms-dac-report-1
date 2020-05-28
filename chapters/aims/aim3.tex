@@ -15,10 +15,10 @@ In addition, we have been advised by Kristian Helin to use skin melanoma because
 \textbf{We hypothesize that the dysregulation of PRC2 methylation alters the state of a cell, and consequently alters the oncogenic potential of cancer driver genes.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Aim 1.1
+% Aim 3.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection*{Aim 1.1. Identify cancer drivers by mutational patterns in PRC2-mutant tumors.}
+\subsection*{Aim 3.1. Identify cancer drivers by mutational patterns in PRC2-mutant tumors.}
 
 
 \subsubsection*{Approach}
@@ -54,10 +54,10 @@ Further investigation is needed to fully understand if the analysis of single-ce
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Aim 1.2
+% Aim 3.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection*{Aim 1.2. Determine genetic dependencies caused by aberrant PRC2 function.}
+\subsection*{Aim 3.2. Determine genetic dependencies caused by aberrant PRC2 function.}
 
 
 \subsubsection*{Approach}
@@ -80,3 +80,14 @@ An alternative approach to building a model for each individual gene as proposed
 This would recognize instances where the PRC2 mutation has caused the dependency on a group of genes to change, but where each cell line has different genes in the set that have altered dependency or the dependency is spread evenly amongst the genes.
 One foreseeable difficulty will be finding a single metric to summarise the dependency score for an entire pathway for each cell line.
 One option would be to use a method such as Gene Set Variation Analysis \cite{Hanzelmann2013} to transform the gene level data into a pathway level enrichment score for each cell line.
+
+
+{\color{red} 
+Vinay's comments
+\begin{enumerate}
+    \item Why is "Rationale" incomplete? Are you filling this in?
+    \item For the spatial determinants -- you could also consider whether the co-mutated regions also exist within regions marked with specific chromatin modifications in normal tissue. Polak and colleagues checked for such context when inferring cell-of-origin. Additionally, if you are doing a co-mutation or mutational process study, you will need to control for local sequence composition
+    
+    \item The rationale for why PRC2-activated would be mutated more in PRC2-mutant tumors is unclear, unless you already expect that open/closed chromatin in PRC2-mutant tumors have different mutational rates. 
+\end{enumerate}
+}

@@ -6,7 +6,7 @@ Though \KRAS{} is estimated to be mutated in 10\%-14\% \cite{Bailey2018, Prior20
 One explanation for this phenomenon is that the actual mutational event is less likely to occur in some tissues compared to others due to differences in mutagenic processes.
 However, this is unlikely because neighboring tissues often demonstrate drastically different rates of \KRAS{} mutation.
 One striking example is how 32\% of lung adenocarcinoma, but only 4\% of small cell lung cancer tumors have a \KRAS{} mutation \cite{Bailey2018, Prior2020TheCancer}.
-Additionally, experimental evidence has demonstrated that even the forced expression of mutant \kras{} does not induce a hyperproliferative phenotype in all tissues \cite{Ray2011EpithelialModel,  Parikh2012MouseResponses}.
+Additionally, experimental evidence has demonstrated that even the forced expression of mutant \kras{} does not induce a hyperproliferative phenotype in all tissues \cite{Guerra2003TumorContext., Ray2011EpithelialModel,  Parikh2012MouseResponses}.
 Instead, we hypothesize that the basal state of a tissue, including the existing signaling architecture, determines its sensitivity to \KRAS{} hyperactivation.
 Therefore, I aim to identify properties of tissues that determine their sensitivity to \KRAS{} oncogenesis.
 
@@ -25,7 +25,7 @@ This will be accomplished via similar means as explained in Aim 1.1: by calculat
 However, instead of normalizing the values to report the probability of each allele to occur in each tumor sample, the values will be normalized to the total number of mutations in the tumor sample.
 Thus, they will be comparable across cancer samples as a measure of the ability to gain a \KRAS{} mutation.
 
-In addition, I will explore the use of count-based statistical models to extract additional information not available in aggregated statistics.
+In addition, we will explore the use of count-based statistical models to extract additional information not available in aggregated statistics.
 To begin, a logistic model will be fit to the number of mutations that could cause an activating \KRAS{} mutation and the total number of mutations to predict whether the tumor sample had a \KRAS{} mutation.
 The coefficients of the fit model will be estimates of the impact of the types of mutations found in each sample on the probability of having a \KRAS{} mutation.
 Additional models will be fit with fewer (e.g. just the total number of mutations) or additional (e.g. the mutation of other oncogenes such as \emph{BRAF} or \emph{EGFR}, stage of cancer, etc.) covariates to estimate the predictive power of the number of mutations that could create an oncogenic \KRAS{} allele taking into account other factors.
@@ -76,7 +76,7 @@ Thus far, the \KRAS{}-insensitive tissues with the most number of samples with W
 % Aim 2.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection*{Aim 2.2. Model \KRAS{} sensitivity on the basal signaling of tissue.}
+\subsection*{Aim 2.2. Model \KRAS{} sensitivity on the basal signaling of a tissue.}
 
 \subsubsection*{Approach}
 
@@ -170,10 +170,23 @@ An overview of the number of tumor samples and how many have \KRAS{} mutations w
 
 \subsection*{Vinay's notes on Aim 2}
 
-{\color{red} test...
+{\color{red} 
 
 \begin{enumerate}
-\item For aim 2.1, I think you should also explore the 
+\item Aim 2.1 is unclear in describing your approach to use mutational signatures for determining which mutational processes alter KRAS mutational frequency. Conceptually, it seems like you are relating the strength of mutational signatures in each sample to the frequency of KRAS alleles relative to the number of mutations per tumor sample. It's not clear how this would be different from Aim 1.1 and how this would provide something different from what you already found out in Figures 3.1 and 3.2. Although all of the relevant mutations in KRAS are nonsynonymous, I think you also need to account for the overall rates of synonymous and nonsynonymous mutations observed across the genome (you may have already done so) in both your mutational signature calculation and your logistic model. If tumor types exhibit variation int he balance between nonsynonymous mutations and fewer synonymous changes, then you will need to account for whether a mutational process that may generate KRAS mutants would tend to generate more synonymous than nonsynonymous mutations. I also think that mutational signature strengths and exposures would be relevant covariates for the logistic model. You should include a few sentences about how you intend to select covariates for your logistic model and how you will control for false associations.
+
+\item If tissue-of-origin is experimentally shown to be a major covariate, you could test for the associations of chromatin state upon KRAS severity in this Aim (unless you have already tested this). Polak et al Nature 2015 (https://www.nature.com/articles/nature14221) and more recently https://www.biorxiv.org/content/10.1101/517565v1 conduct tests about precancerous mutations occurring in the genome marked with tissue-specific chromatin modifications and find an associations between where those mutations occur and what type of tumor one gets. You propose taking a similar approach in Aim 3, but I think you should examine chromatin structure and correlation to the occurrence and ellele-frequency of a specific KRAS allele as well. You could also test if you could find an association between what KRAS allele your sample has in what tissue type and where the genome-wide mutations occur -- if tissue type should dictate which KRAS allele you get, then other features of tissue type should correlate with the KRAS allele as well. This test could fix the issue of loss of predictive power for your model. You could use Roadmap Epigenome chromatin annotations from matched normal tissue type or TCGA ATAC-seq for tumor-specific chromatin accessibility. 
+
+\item Are you going to use matched-normal data and/or normal mutation rates in tissue as a control for associations of a mutational signature to a nonsynonymous mutation? If you are making the claim of a particular mutational process in one tissue driving the formation of a specific KRAS allele or mutations to the other interacting components, you would need some control for 
+
+\item For the proteomics, you need to include a small piece about how you can benchmark the sensitivity of protein detection. MS/MS still has issues with detecting proteins at levels proportional to their concentration (in most MS/MS experiments, maybe a handful of peptides in a larger protein sequence get detected), and while normalization strategies exist, you should include in your "pitfalls" section for Aim 2.2 how you will account for dropped-out proteins and the loss of sensitivity to detect a protein involved in KRAS allele activity. For instance, will you construct a saturation curve to determine if downsampling PSMs at a certain fraction will cause some proteins to completely drop out of detection? Will you use transcriptomics to help support whether a protein is truly dropped out? Are you going to fit some kind of standardized value of protein abundance instead of actual abundance values?
+
+\item For 2.3, you will need to compare KRAS's allele frequencies to the frequencies estimated for driver point mutations -- I'd recommend reading the PCAWG papers on driver mutations (https://www.biorxiv.org/content/10.1101/190330v2, https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7002750/) to get a sense of how exactly you could infer driver or passenger status from allele frequencies. To start, if you are working with the PCAWG data, then allele frequencies for known drivers and passengers of different somatic mutations will have already been determined, and you can use those results to construct a simple model for what passenger/neutral KRAS mutation allele frequencies will look like vs driver/functional KRAS mutations. You should also compare the results to those of mutations at other critical signaling proteins (EGFR, MAPK, etc). 
+
+\item Amiddst all of this, how are (if at all) controlling for copy number status?
+
+\item It is not clear from Aim 2.3 how much power you would have to find KRAS alleles in insensitive tissues because the overall model of KRAS sensitivity that you are suggesting implies that most of the functional KRAS alleles are largely found in sensitive tissues and not at significant levels in insensitive tissue (unless you actually have those measurements in other tumor types). If you can't detect KRAS mutations in insensitive tissue, how could DepMap data provide a reasonable proxy for the co-mutation analysis? I think we had discussed such an analysis last year, so I think it would be useful to include in your "pitfalls" section how you could use DepMap data (where KRAS "mutations" would have been experimentally induced in otherwise insensitive tissue). 
+
 \end{enumerate}
 
 }
