@@ -6,14 +6,14 @@ In cancers of the colorectum, lung, pancreas, and blood plasma, \KRAS{} is almos
 Many researchers believe the mutations are functionally equivalent, however biochemical, signaling, 
 and clinical distinctions have been previously documented (extensively reviewed by \cite{Miller2012, Li2018}).
 For example, codon 12, 13, and 61 mutations reduce the rate of intrinsic and/or GAP-mediated hydrolysis, and mutations at 13 and 61, but not 12, also enhance the rate of GDP exchange \cite{Hunter2015a, Smith2013}.
-Alternatively, an increased rate of GDP exchange is the only mechanism by which 146 mutations increase the concentration of GTP-bound \kras{} \cite{Feig1988RelationshipProteins., Edkins2006, Janakiraman2010, Poulin2019}.
+In contrast, an increased rate of GDP exchange is the only mechanism by which 146 mutations increase the concentration of GTP-bound \kras{} \cite{Feig1988RelationshipProteins., Edkins2006, Janakiraman2010, Poulin2019}.
 Additional distinctions have been identified between different mutant alleles, including some between mutations at the same amino acid position \cite{Pershing2015, Hunter2015a, Poulin2019, Hobbs2019AtypicalCancer., Yuan2018, Kovalski2019, Ihle2012, Spoerner2004, Smith2014a, Pantsar2018}.
 For instance, unlike the G12D/V variants, the G12R mutation does not drive macropinocytosis via a MYC-dependent mechanism in PAAD \cite{Hobbs2019AtypicalCancer.}.
 
 Likely as a consequence of their distinct properties, associations have been uncovered between the specific \KRAS{} mutation status of a patient's cancer and its drug-response or clinical outcome \cite{Haigis2017, Li2018}.
 For instance, a retrospective meta-analysis suggested that COAD tumors with a \KRAS{} G13D allele are sensitive to anti-EGFR therapies, a treatment generally discouraged for \KRAS{}-mutant tumors \cite{DeRoock2010}, likely due to allele-specific interactions with the Ras GAP NF-1 \cite{McFall2019, Rabara2019, Zafra2019}.
 Another example is that the \KRAS{} G12D allele is associated with reduced overall survival in advanced PAAD when separately compared to patients with WT \KRAS{}, \KRAS{} G12R, or \KRAS{} G12V \cite{Bournet2016}.
-Thus far, the hypothesis has been that the different biological properties of the mutant \KRAS{} alleles is the cause of these clinical distinctions.
+Thus far, the hypothesis has been that the different biological properties of the mutant \KRAS{} alle les is the cause of these clinical distinctions.
 However, it is also possible that allele-specific genetic interactions drive the varying clinical outcomes.
 
 \textbf{We hypothesize that the biological distinctions between the \KRAS{} mutations result in allele-specific genetic interactions that can be used to further characterize the \KRAS{} alleles.}\footnote{The results from this analysis have been prepared for submission to \emph{Nature Genetics} as an Analysis article.}
@@ -44,11 +44,11 @@ Finally, the extent to which the active mutagenic processes in a tumor determine
 
 \subsubsection*{Pitfalls and alternative approaches}
 
-One caveat to the analyses proposed above is that not all mutagenic forces are captured by the current array of mutational signatures.
+One caveat to the analyses described above is that not all mutagenic forces are captured by the current array of mutational signatures.
 Presently, mutational signatures are being extended to include different types of mutations beyond SBS, and we may be able to use these to enhance the above analyses.
 
 The calculations of the likelihood that a mutational process caused a \KRAS{} allele and the estimation of the allelic distribution using the trinucleotide contexts both assume that the mutational signatures are uniformly distributed across the genome.
-However, the distribution is known to be non-uniform, and instead depends on various characteristics of the DNA including the chromatin state [CITE] and local rate and strand-bias of transcription \cite{Tomkova2018MutationalAsymmetry}.
+However, the distribution is known to be non-uniform, and instead depends on various characteristics of the DNA including the chromatin state \cite{Schuster-Bockler2012, Polak2015, Gonzalez-Perez2019} and local rate and strand-bias of transcription \cite{Tomkova2018MutationalAsymmetry}.
 
 
 \subsubsection*{Preliminary data}
@@ -57,14 +57,14 @@ Using mutational signatures, we discovered that while the mutational signature b
 For example, in COAD and PAAD, there was a higher probability of the \KRAS{} G12C mutations to have been caused by reactive oxygen species (SBS18, navy blue bars; Figure \ref{fig:mut-sig}).
 Also, carcinogens in tobacco smoke were less likely to have cause the G12D allele than the G12A/C/V alleles in LUAD.
 
-\begin{figure}[ht]
+\begin{figure}[t!]
 \centering
 \includegraphics[width=180mm]{figures/aim1/Fig_1_mod.jpg}
 \caption{
     \textbf{The contribution of mutational processes to \KRAS{} mutagenesis.}
     \textbf{a.} The average levels of mutational signatures in tumor samples separated by \KRAS{} allele. Each color represents a different mutational signature. Mutational signatures of know etiology are annotated.
     \textbf{b.} The average probability of each mutational signature to have caused the \KRAS{} mutation in a tumor sample. This value accounts for the level of each mutational signature in the tumor sample and the ability of the mutational signature to cause the indicated \KRAS{} allele.
-}
+ }
 \label{fig:mut-sig}
 \end{figure}
 
@@ -105,7 +105,7 @@ Alternatively, in LUAD, the mutational activation of \emph{EGFR} was demonstrate
 To this end, the comutation interactions between each \KRAS{} allele and every other mutated gene were investigated using a one-sided Fisher's exact test of association to identify increased rates of comutation and a test for mutual exclusivity proposed by Leiserson \emph{et al.} \cite{Leiserson2016} to identify reduced rates of comutation.
 
 To gain functional insight into the comutation networks, genes known to physically interact with \kras{} \cite{Kovalski2019}, signal up- or downstream of \kras{} \cite{Kanehisa2017, Kanehisa2016KEGGAnnotation.}, or are known oncogenes \cite{Bamford2004TheWebsite., Sondka2018} were examined further.
-Also, the Enrichr tool was used to identify the enrichment of biological functions in the networks.
+Also, the Enrichr tool \cite{Chen2013, Kuleshov2016Enrichr:Update.} was used to identify the enrichment of biological functions in the networks.
 
 
 \subsubsection*{Pitfalls and alternative approaches}
@@ -115,7 +115,7 @@ To avoid these mutations resulting in false positives, only genes with an overal
 In addition, only comutation partners with at least three comutation events or a comutation frequency with a \KRAS{} allele of at least 10\% (i.e. 10\% of the tumors with a \KRAS{} allele also had a mutation in the given gene) were considered.
 For detecting reduced comutation interactions, only genes with a mutational frequency of at least 2\% and at least 10 mutually exclusive events (samples in which only the interacting gene was mutated or the \KRAS{} allele was present) were considered.
 
-An additional analysis to that proposed could integrate the predicted effect of each mutation to the function of the gene.
+An additional analysis to that described could integrate the predicted effect of each mutation to the function of the gene.
 There are various tools for predicting the effect of a mutation including determining patterns in the localization of the mutations to hotspots along the gene \cite{Carter2009, Dees2012, Lawrence2013, Tamborero2013, Porta-Pardo2014}, 3D-regions of the protein \cite{Reimand2013, Porta-Pardo2015, Mularoni2016, Niu2016, Tokheim2016a, Gao2017a}, and evolutionarily conserved regions \cite{Kumar2009, Adzhubei2010, Reva2011, Carter2013a, Shihab2013}.
 The proposed analysis could be modified to include these scores as weights, thereby identifying comutation interactions that include mutations likely to have modified the gene's function.
 
@@ -173,7 +173,7 @@ For these genes, one-versus-all Student's \emph{t}-tests were used to compare th
 
 From the results of Aim 1.2 on allele-specific comutation interactions, we posited that one or more comutating partners could be the true explanatory factors for the differential genetic dependency identified above.
 This was tested by constructing linear regression models for the genetic dependency of each gene found in the above analysis with the following predictors: the RNA expression of the gene, whether the gene itself was mutated, whether the cell line had the \KRAS{} allele associated with differential genetic dependence, and one binary indicator variable for each gene that comutates (from Aim 1.2) with the associated \KRAS{} allele (Eq. \ref{eq:depmap-comut-equation}).
-The model was fit with elastic net regularization, forcing many of the coefficients to 0 to prevent overfitting.
+The model was fit with elastic net regularization \cite{Zou2005RegularizationNet}, forcing many of the coefficients to 0 to prevent overfitting.
 The non-zero coefficients were individually analyzed to understand the extent to which comutation interactions may account for the measured genetic dependency.
 
 \begin{equation}
@@ -214,7 +214,7 @@ Measuring for gene set enrichment revealed strong patterns in differential depen
 They were hierarchically clustered into 4 groups by their dependency scores (Figure \ref{fig:genetic-dependency}d).
 Four notable genes with allele-specific associations are displayed in Figure \ref{fig:genetic-dependency}e.
 First, knocking-out \emph{LIN7C}, a gene that maintains the asymmetric distribution of membrane proteins in polarized epithelial cells \cite{Monastyrskaya2013MiR-199a-5pSyndrome}, had a more severe reduction on growth in \KRAS{ } G13D cell lines compared to the others.
-Also, a regulator of apoptosis previously linked to dysregulated expression in cancer, \emph{TFPT}, demonstrated significantly greater dependency in G12D cell lines.
+Also, a regulator of apoptosis previously linked to dysregulated expression in cancer, \emph{TFPT} \cite{Franchini2006ApoptosisInfluenced, Rapaport2010DeterminingCancer, Huttlin2015, Reid2019Genome-wideRisk}, demonstrated significantly greater dependency in G12D cell lines.
 \emph{STARD9}, a gene encoding a kinesin required for mitotic spindle assembly \cite{Torres2011TheAssembly}, had moderate growth defects when knocked-out in all cell lines except those with a \KRAS{} G12D mutation.
 Lastly, the kinetochore-associated protein (\emph{KNTC1}), a regulator of the mitotic checkpoint \cite{Chan2000HumanKinetochores., Scaerou2001TheKinetochore., Kops2005ZW10Kinetochore.}, which demonstrated moderate to strong lethal effects when knocked out in almost every cell line except for those with a \KRAS{} G12V allele.
 Overall, the \KRAS{} alleles were associated with substantially different genetic dependencies on specific cellular processes, signaling pathways, and individual genes.
