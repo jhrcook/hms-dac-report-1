@@ -8,13 +8,13 @@ However, this is unlikely because neighboring tissues often demonstrate drastica
 One striking example is how 32\% of lung adenocarcinoma, but only 4\% of small cell lung cancer tumors have a \KRAS{} mutation \cite{Bailey2018, Prior2020TheCancer}.
 Additionally, experimental evidence has demonstrated that even the forced expression of mutant \kras{} does not induce a hyperproliferative phenotype in all tissues \cite{Guerra2003TumorContext., Ray2011EpithelialModel,  Parikh2012MouseResponses}.
 Instead, we hypothesize that the basal state of a tissue, including the existing signaling architecture, determines its sensitivity to \KRAS{} hyperactivation.
-Therefore, we aim to identify properties of tissues that determine their sensitivity to \KRAS{} oncogenesis.
+Therefore, we aim to identify properties of tissues that determine their sensitivity to \KRAS{}-driven oncogenesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Aim 2.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection*{Aim 2.1. Determine the extent to which mutational processes affects the frequency of \KRAS{} mutations across multiple cancer types.}
+\subsection*{Aim 2.1. Determine the extent to which mutational processes affect the frequency of \KRAS{} mutations across multiple cancer types.}
 
 \subsubsection*{Approach}
 
@@ -67,7 +67,7 @@ Thus far, the \KRAS{}-insensitive tissues with the most number of samples with W
 \centering
 \includegraphics[width=120mm]{figures/aim2/kras-mutations-from-insensitive-tissues.jpg}
 \caption{
-    \textbf{The number of targeted sequenced and whole genome or exome sequenced (WG/ES) samples with \KRAS{} mutations.}
+    \textbf{The number of targeted sequenced and WG/ES samples with \KRAS{} mutations.}
     Each cancer type (row) is annotated with the total number of samples with a \KRAS{} mutation.
 }
 \label{fig:num-samples-kras-resistant}
@@ -106,7 +106,7 @@ The approach outlined above uses only linear models, though there are many non-l
 There are two primary reasons why we propose the use of linear models for the present study.
 The first is that we believe that coefficients for the linear methods are more interpretable than the parameters used by non-linear methods.
 The second is that the nonlinear methods have hyperparameters that must be tuned to prevent overfitting.
-With such few data points, common methods such as cross-validation are not as effective.
+With so few data points, common methods, such as cross-validation, are not as effective.
 
 A potential pitfall for this analysis is that \KRAS{} may not drive cancer via the same mechanism in all \KRAS{} sensitive tissues.
 Conversely, the same may be true for how insensitive tissues stifle oncogenic \kras{} signaling.
@@ -145,10 +145,10 @@ These two precursory analyses demonstrate that organ-specific expression will pr
 \subsubsection*{Approach}
 
 Though the experimental evidence suggests that some tissues are not susceptible to hyperactive \kras{} signaling, there are still tumors from these locations that possess a mutation at a \KRAS{} hotspot.
-While Aim 2.2 proposes to identify the differences between \KRAS{}-sensitive and insensitive tissues in homeostasis, this Aim approaches the question from the opposing direction: "What allowed \KRAS{} to drive these cancers in normally insensitive tissues?"
+While Aim 2.2 proposes to identify the differences between \KRAS{}-sensitive and insensitive tissues at homeostasis, this Aim approaches the question from the opposing direction: "What allowed \KRAS{} to drive these cancers in normally insensitive tissues?"
 
 First, we will determine if these mutations were likely to have driven the cancer by measuring their allele-fraction in the sequencing data.
-If the mutation to \KRAS{} was found in a small proportion of the sequencing reads (compared to known oncogenes of the cancer) that covered the \KRAS{} locus, then it was less likely to have driven tumor progression and was instead a passenger mutation.
+If the mutation to \KRAS{} was found in a small proportion of the sequencing reads that covered the \KRAS{} locus (compared to mutations of \emph{bona fide} oncogenes of the cancer), then it was less likely to have driven tumor progression and was instead a passenger mutation.
 In addition, if the data are available, we can analyze RNA and/or protein expression to ensure that the hyperactive allele was expressed.
 
 If we find that the \KRAS{} mutations were likely to have acted as drivers in tumors originating in insensitive tumors, the we will proceed with characterizing recurrent genetic co-alterations.
